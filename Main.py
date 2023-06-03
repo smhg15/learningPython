@@ -10,6 +10,7 @@ password_entry_var = tk.StringVar()
 text = ''
 message_var = tk.StringVar()
 title_var = 'My First desk App'
+tasklist = ['Follow the tutorial','add my own style and widgets','re-combine functions']
 
 #FUNCTIONS
 def login():
@@ -28,7 +29,7 @@ def to_binary():
         binary_text += bin(ord(character))[2:]
     textfield.delete('1.0',tk.END)
     textfield.insert('1.0',binary_text)
-    
+        
 #CONTENT
 title = tk.Label(windows, text=title_var)
 title.config(bg='#000000', fg='#00ff00', font=('Comic Sans MS',28,'bold'))
@@ -69,5 +70,8 @@ textfield.pack()
 to_binary_button = tk.Button(windows, text='To Binary', command=to_binary)
 to_binary_button.config()
 to_binary_button.pack()
-#LOOP
+
+for task in tasklist:
+        tk.Checkbutton(windows,text=task).pack()
+        
 windows.mainloop()
