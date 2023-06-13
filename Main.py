@@ -4,20 +4,27 @@ import tkinter as tk
 windows = tk.Tk() #render blank windows
 windows.config(bg='#000000')
 
-#VARIABLES.
+#VARIABLES. las variables de Python pueden declararse en un mismo renglón (las de tkinter no). Ejemplo: var1 = var2 = var3 = '' (las 3 variables poseen el valor ''). También se puede asignar distintos valores: var1, var2, var3 = 1, 'perro', false. 
 user_entry_var = tk.StringVar()
 password_entry_var = tk.StringVar()
 text = ''
 message_var = tk.StringVar()
 title_var = 'My First desk App'
-tasklist = ['Follow the tutorial','add my own style and widgets','re-combine functions']
+tasklist = []
+
+registered_user_db = input('Please, create your username: ')
+registered_password_db = input('Please, create a password: ')
+ask_for_task = 'Y'
+while ask_for_task == 'Y' or ask_for_task == 'y':
+    tasklist.append(input('Please, record a task on your tasklist: '))
+    ask_for_task = input('Do you want to record another task? (Y/N): ')
 
 #FUNCTIONS
 def login():
     registered_user = user_entry_var.get()
     registered_password = password_entry_var.get()
     
-    if registered_user == 'admin' and registered_password == '1234':
+    if registered_user == registered_user_db and registered_password == registered_password_db:
         message.config(text ='Welcome ' + registered_user + '!', fg='#00ff00', bg='#000000', font=('Comic Sans MS',14,'bold'))  
     else:
         message.config(text ='Ups! something is wrong!, this user is yours?... should i call the police?', fg='#ff0000', bg='#000000',font=('Comic Sans MS',14,'bold'))
